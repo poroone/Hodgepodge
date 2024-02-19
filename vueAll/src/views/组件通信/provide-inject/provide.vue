@@ -2,7 +2,7 @@
   <div>
 
     <!-- provide -->
-    <ProvideMode></ProvideMode>
+    <Provide-mode></Provide-mode>
   </div>
 </template>
 <!-- setup -->
@@ -15,7 +15,7 @@ provide("names", "我是provide");
 
 <!-- option -->
 <script>
-import ProvideMode from "./provide-mode.vue";
+import ProvideMode from "./provideMode.vue";
 import { computed } from "vue";
 export default {
   components: {

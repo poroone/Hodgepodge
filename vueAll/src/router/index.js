@@ -22,6 +22,11 @@ const routes = [
     name: "provide",
     component: () => import(/* webpackChunkName: "about" */ '../views/组件通信/provide-inject/provide.vue')
 
+  },
+  {
+    path:"/slot",
+    name:"slot",
+    component: () => import(/* webpackChunkName: "about" */ '../views/slot/parent.vue')
   }
 ]
 
