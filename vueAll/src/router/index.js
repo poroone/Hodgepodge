@@ -10,6 +10,9 @@ const routes = [
   {
     path: '/about',
     name: 'about',
+    meta:{
+      keep:false
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -20,13 +23,39 @@ const routes = [
   {
     path: "/provide",
     name: "provide",
+    meta:{
+      keep:false
+    },
     component: () => import(/* webpackChunkName: "about" */ '../views/组件通信/provide-inject/provide.vue')
 
   },
   {
     path:"/slot",
     name:"slot",
+    meta:{
+      keep:false
+    },
     component: () => import(/* webpackChunkName: "about" */ '../views/slot/parent.vue')
+  },
+  {
+    path:"/keepAlive",
+    name:"keepAlive",
+    meta:{
+      keep:true
+    },
+    component: () => import(/* webpackChunkName: "about" */ '../views/keepAlive/keepAlive.vue')
+  },{
+    path:"/asyncComponent",
+    name:"asyncComponent",
+    component: () => import(/* webpackChunkName: "about" */ '../views/分包/defineAsyncComponent.vue')
+  },{
+    path:"/props",
+    name:"props",
+    component: () => import(/* webpackChunkName: "about" */ '../views/组件通信/poros/emit.vue')
+  },{
+    path:"/dom",
+    name:"dom",
+    component: () => import(/* webpackChunkName: "about" */ '../views/Dom/dom.vue')
   }
 ]
 

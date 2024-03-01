@@ -18,6 +18,7 @@ provide("names", "我是provide");
 import ProvideMode from "./provideMode.vue";
 import { computed } from "vue";
 export default {
+  name: 'provide',
   components: {
     ProvideMode,
   },
@@ -31,10 +32,12 @@ export default {
   // },
   // 使用this应该使用函数
   provide() {
-    return{
-      name:this.name,
-      length:computed(()=>this.name.length) //vue3的
+    return {
+      name: this.name,
+      length: computed(() => this.name.length) //vue3的
     }
   },
 };
 </script>
+
+

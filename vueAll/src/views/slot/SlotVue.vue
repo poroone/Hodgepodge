@@ -16,7 +16,7 @@
         <hr />
         作用域插槽
         <div>开始</div>
-        <template v-for="item in array" :key="item">
+        <template v-for="item,index in array" :key="item">
                 <slot name="poro" :index="index" :item="item"></slot>
         </template>
         <div>结束</div>
@@ -30,5 +30,15 @@ const props = defineProps({
                 default: () => []
         }
 })
+defineOptions({
+        name:"SlotVue"
+})
+// defineSlots<{
+//   	// default 是插槽名称
+//     // 函数的第一个TS对象类型参数是插槽期望接收的 props 的TS类型
+//     // 返回值类型目前被忽略，可以是 any，未来可能利用它来检查插槽内容
+// //   default(props: { test: number}): any
+// }>()
 </script>
+
 <style scoped></style>

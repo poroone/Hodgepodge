@@ -1,15 +1,22 @@
 <template>
-  <div>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/provide">provide</router-link> |
-      <router-link to="/slot">slot</router-link>
-    </nav>
-    <router-view />
-  </div>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> |
+    <router-link to="/provide">provide</router-link> |
+    <router-link to="/slot">slot</router-link> |
+    <router-link to="/keepAlive">keep</router-link> |
+    <router-link to="/asyncComponent">asyncComponent</router-link> |
+    <router-link to="/props">props</router-link> |
+    <router-link to="/dom">dom</router-link> |
+  </nav>
+  <router-view v-slot="{ Component, route }">
+    <keep-alive>
+      <component :is="Component" :key="route.path"></component>
+    </keep-alive>
+  </router-view>
 </template>
-
+<script setup>
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
