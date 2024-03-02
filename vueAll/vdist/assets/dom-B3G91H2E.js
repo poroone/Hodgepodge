@@ -1,0 +1,2 @@
+import{z as o,o as a,c,j as l,A as n,f as _,e as d,F as u,a as m}from"./index-Dxk_kpsP.js";const i=o({name:"DOMchildren",__name:"domChildren",setup(s,{expose:e}){return e({num:132}),(t,r)=>(a(),c("div",null,"我是子元素"))}}),p=m("div",null,null,-1),x=o({__name:"dom",setup(s){const e=l();return(async()=>{await n(),console.log(e.value)})(),n(()=>{console.log(e.value)}),(r,f)=>(a(),c(u,null,[p,_(" dom获取 "),d(i,{ref_key:"children",ref:e},null,512)],64))}});export{x as default};
+//# sourceMappingURL=dom-B3G91H2E.js.map

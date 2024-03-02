@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup >
 import { ref, reactive } from 'vue'
 import props from "./props.vue"
 

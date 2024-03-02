@@ -64,6 +64,10 @@ const routes = [
     path:"/transition",
     name:"transition",
     component: () => import(/* webpackChunkName: "about" */ '../views/动画Transition/transition.vue')
+  },{
+    path:"/api",
+    name:"api",
+    component: () => import(/* webpackChunkName: "about" */ '../views/componentApi/index.vue')
   }
 ]
 

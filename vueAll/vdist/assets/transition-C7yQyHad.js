@@ -1,0 +1,2 @@
+import{z as u,j as _,o as t,c as a,e as n,w as s,B as r,T as i,a as c,_ as l}from"./index-Dxk_kpsP.js";const d={key:0},p={key:0},f=u({__name:"transition",setup(m){const e=_(!0);return(v,o)=>(t(),a("div",null,[n(i,{name:"fade",type:"transition",appear:"","out-in":""},{default:s(()=>[e.value?(t(),a("h1",d,"你好")):r("",!0)]),_:1}),n(i,null,{default:s(()=>[e.value?(t(),a("h2",p,"再见")):r("",!0)]),_:1}),c("button",{onClick:o[0]||(o[0]=h=>e.value=!e.value)},"123")]))}}),x=l(f,[["__scopeId","data-v-e0522207"]]);export{x as default};
+//# sourceMappingURL=transition-C7yQyHad.js.map

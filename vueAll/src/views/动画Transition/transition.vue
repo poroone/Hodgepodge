@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { ref, reactive, Transition } from 'vue'
 const show = ref(true)
 </script>

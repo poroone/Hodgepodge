@@ -4,7 +4,7 @@
     <domChildren ref="children"></domChildren>
 </template>
 
-<script setup lang='ts'>
+<script setup >
 import { ref, reactive,nextTick} from 'vue'
 import domChildren from './domChildren.vue';
 const children=ref()

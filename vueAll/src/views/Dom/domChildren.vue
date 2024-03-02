@@ -4,7 +4,7 @@
 
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import {ref,reactive} from 'vue' 
 defineExpose({num:132})
 defineOptions({

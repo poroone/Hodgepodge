@@ -9,8 +9,8 @@
     <router-link to="/props">props</router-link> |
     <router-link to="/dom">dom</router-link> |
     <router-link to="/mixin">mixin</router-link> |
-    
     <router-link to="/transition">transition</router-link> |
+    <router-link to="/api">api</router-link> |
   </nav>
   <router-view v-slot="{ Component, route }">
     <keep-alive>
