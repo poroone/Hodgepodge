@@ -100,6 +100,13 @@ const routes = [
       name:"hooksPoro"
     },
     component: () => import(/* webpackChunkName: "about" */ '../views/hook/index.vue')
+  },{
+    path:"/hFunction",
+    name:"hFunction",
+    meta:{
+      name:"h函数"
+    },
+    component: () => import(/* webpackChunkName: "about" */ '../views/h函数/h.vue')
   }
 ]
 
