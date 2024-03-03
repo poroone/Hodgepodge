@@ -44,28 +44,3 @@
     创建一个响应式代理，它跟踪其自身 property 的响应性，但不执行嵌套对象的深层响应式转换 (深层还是原生对象)。
 # shallowReadonly
     创建一个 proxy，使其自身的 property 为只读，但不执行嵌套对象的深度只读转换（深层还是可读、可写的）。
-# computed
-    计算属性 当我们的某些属性是依赖其他状态时，我们可以使用计算属性来处理
-
-### 如何使用computed
-1.  接收一个getter函数，并为 getter 函数返回的值，返回一个不变的 ref 对象
-2.  接收一个具有 get 和 set 的对象，返回一个可变的（可读写）ref 对象
-
-- 第一种
-```javascript
-const full=computed(()=>{
-    return xxx+xxx
-})
-```
-- 第二种
-```javascript
-const full =computed({
-    get:()=>{
-        return xxx+xxx
-    },
-    set:(newValue)=>{
-        xxx=newValue[0]
-        xxx=newValue[1]
-    }
-})
-```
