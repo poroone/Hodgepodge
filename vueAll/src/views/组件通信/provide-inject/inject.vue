@@ -8,6 +8,11 @@
 <script setup >
 import { ref, reactive, inject } from "vue";
 const names = inject("names");
+const infoName = inject("infoName");
+const info = inject("info");
+console.log(info)
+infoName("poro你好")
+console.log(info)
 console.log(names);
 </script>
 

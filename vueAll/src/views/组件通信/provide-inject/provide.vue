@@ -6,15 +6,23 @@
   </div>
 </template>
 <!-- setup -->
-<!-- <script setup>
+<script setup>
 import { ref, reactive, provide } from "vue";
-import ProvideMode from "./computed/provide-inject/provide-mode.vue";
+import ProvideMode from "./provideMode.vue";
+const info=reactive({
+  name:"poro"
+})
+const infoName=(name)=>{
+info.name=name
+}
+provide("infoName", infoName);
+provide("info", info);
 provide("names", "我是provide");
-</script> -->
+</script>
 
 
 <!-- option -->
-<script>
+<!-- <script>
 import ProvideMode from "./provideMode.vue";
 import { computed } from "vue";
 export default {
@@ -38,6 +46,6 @@ export default {
     }
   },
 };
-</script>
+</script> -->
 
 

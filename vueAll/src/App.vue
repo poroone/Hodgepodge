@@ -11,6 +11,7 @@
     <router-link to="/mixin">mixin</router-link> |
     <router-link to="/transition">transition</router-link> |
     <router-link to="/api">api</router-link> |
+    <router-link to="/hooks">hooks</router-link> |
   </nav>
   <router-view v-slot="{ Component, route }">
     <keep-alive>
@@ -19,6 +20,14 @@
   </router-view>
 </template>
 <script setup>
+// import { watch } from "vue"
+// import route from "./router";
+// import useTitle from "./views/hook/hooks/useTitle";
+// watch(() => route.currentRoute.value, (newValue) => {
+//   console.log("watch", newValue)
+//   useTitle(newValue.meta.name)
+
+// },{immediate:true})
 </script>
 <style lang="less">
 #app {
