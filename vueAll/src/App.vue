@@ -13,7 +13,7 @@
     <router-link to="/api">api</router-link> |
     <router-link to="/hooks">hooks</router-link> |
     <router-link to="/hFunction">hFunction</router-link> |
-  
+    <router-link to="/directive">directive</router-link> |
   </nav>
   <router-view v-slot="{ Component, route }">
     <keep-alive>
