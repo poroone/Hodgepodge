@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { ref, reactive } from 'vue'
 import api from './api.vue'
 import api2 from './api2.vue'

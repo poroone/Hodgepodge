@@ -6,7 +6,7 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 
 import hook from './hooks/index.js'
 const { useCounter, useTitle, useScroolPosition, useMousePosition } = hook()

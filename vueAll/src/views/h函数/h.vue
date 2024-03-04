@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { ref, reactive, h, Ref } from 'vue'
 import hcomponent from './hcomponent.vue'
 const counter = ref(0)

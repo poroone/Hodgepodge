@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
+    <router-link to="/home/poro">Home</router-link> |
+    <router-link to="/about/poroone/info/233">About</router-link> |
     <router-link to="/provide">provide</router-link> |
     <router-link to="/slot">slot</router-link> |
     <router-link to="/keepAlive">keep</router-link> |
@@ -14,22 +14,48 @@
     <router-link to="/hooks">hooks</router-link> |
     <router-link to="/hFunction">hFunction</router-link> |
     <router-link to="/directive">directive</router-link> |
+    <router-link to="/router/poro">routerParams</router-link> |
+    <button @click="router">routerQuery </button>
+    <router-link to="/error">error</router-link> |
+    <router-link to="/error/user/123">error</router-link> |
+    <router-link to="/dom" v-slot="{ href, route, navigate, isActive, isExactActive }">
+      <div>
+        <p>href ------{{ href }}</p>
+        <p>route ------{{ route }}</p>
+        <p>navigate ------{{ navigate }}</p>
+        <p>isActive ------{{ isActive }}</p>
+        <p>isExactActive ------{{ isExactActive }}</p>
+      </div>
+    </router-link>
+
+
   </nav>
   <router-view v-slot="{ Component, route }">
-    <keep-alive>
-      <component :is="Component" :key="route.path"></component>
-    </keep-alive>
+    <template name="poro">
+      <keep-alive>
+        <component :is="Component" :key="route.path"></component>
+      </keep-alive>
+    </template>
   </router-view>
+  
 </template>
 <script setup>
 // import { watch } from "vue"
-// import route from "./router";
+import { prototype } from "html-webpack-plugin";
+import { useRouter } from "vue-router";
 // import useTitle from "./views/hook/hooks/useTitle";
 // watch(() => route.currentRoute.value, (newValue) => {
 //   console.log("watch", newValue)
 //   useTitle(newValue.meta.name)
 
 // },{immediate:true})
+const route = useRouter()
+const router = () => {
+  route.replace({
+    path: "/router/poro",
+    query: { name: "poro", age: 18 }
+  })
+}
 </script>
 <style lang="less">
 #app {

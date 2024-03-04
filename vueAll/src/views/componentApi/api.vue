@@ -3,7 +3,7 @@
     <div>不需要----{{ message.refs }}</div>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { ref, reactive, readonly, toRefs, toRef,unref,isRef,shallowRef,toRaw,isReadonly,isReactive} from 'vue'
 // ref reactive
 const refs = ref("我是ref")

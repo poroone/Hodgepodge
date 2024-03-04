@@ -5,7 +5,7 @@
     <button @click="stop">停止</button>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { ref, reactive, computed, watch, watchEffect } from 'vue'
 const num = ref(1)
 const num2 = ref(1)

@@ -4,6 +4,9 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
+    redirect: "/home/poroone"
+  }, {
+    path: '/home/:name',
     name: 'home',
     meta: {
       name: "homePoro"
@@ -11,7 +14,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
+    path: '/about/:name/info/:id',
     name: 'about',
     meta: {
       keep: false,
@@ -31,7 +34,7 @@ const routes = [
       keep: false,
       name: "providePoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/组件通信/provide-inject/provide.vue')
+    component: () => import(/* webpackChunkName: "provide" */ '../views/组件通信/provide-inject/provide.vue')
 
   },
   {
@@ -41,7 +44,7 @@ const routes = [
       keep: false,
       name: "slotPoro",
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/slot/parent.vue')
+    component: () => import(/* webpackChunkName: "slot" */ '../views/slot/parent.vue')
   },
   {
     path: "/keepAlive",
@@ -50,70 +53,78 @@ const routes = [
       keep: true,
       name: "keepAlivePoro",
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/keepAlive/keepAlive.vue')
+    component: () => import(/* webpackChunkName: "keepAlive" */ '../views/keepAlive/keepAlive.vue')
   }, {
     path: "/asyncComponent",
     name: "asyncComponent",
     meta: {
       name: "asyncComponentPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/分包/defineAsyncComponent.vue')
+    component: () => import(/* webpackChunkName: "asyncComponent" */ '../views/分包/defineAsyncComponent.vue')
   }, {
     path: "/props",
     name: "props",
     meta: {
       name: "propsPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/组件通信/poros/emit.vue')
+    component: () => import(/* webpackChunkName: "props" */ '../views/组件通信/poros/emit.vue')
   }, {
     path: "/dom",
     name: "dom",
     meta: {
       name: "domPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/Dom/dom.vue')
+    component: () => import(/* webpackChunkName: "dom" */ '../views/Dom/dom.vue')
   }, {
     path: "/mixin",
     name: "mixin",
     meta: {
       name: "mixinPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/Mixin/mixin.vue')
+    component: () => import(/* webpackChunkName: "mixin" */ '../views/Mixin/mixin.vue')
   }, {
     path: "/transition",
     name: "transition",
     meta: {
       name: "transitionPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/动画Transition/transition.vue')
+    component: () => import(/* webpackChunkName: "transition" */ '../views/动画Transition/transition.vue')
   }, {
     path: "/api",
     name: "api",
     meta: {
       name: "apiPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/componentApi/index.vue')
+    component: () => import(/* webpackChunkName: "api" */ '../views/componentApi/index.vue')
   }, {
     path: "/hooks",
     name: "hooks",
     meta: {
       name: "hooksPoro"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/hook/index.vue')
+    component: () => import(/* webpackChunkName: "hooks" */ '../views/hook/index.vue')
   }, {
     path: "/hFunction",
     name: "hFunction",
     meta: {
       name: "h函数"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/h函数/h.vue')
+    component: () => import(/* webpackChunkName: "hFunction" */ '../views/h函数/h.vue')
   }, {
     path: "/directive",
     name: "directive",
     meta: {
       name: "自定义指令"
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/自定义指令directives/directives.vue')
+    component: () => import(/* webpackChunkName: "directive" */ '../views/自定义指令directives/directives.vue')
+  }, {
+    path: "/router/:name",
+    name: "router",
+    component: () => import(/* webpackChunkName error*/ "../views/router/index.vue")
+  }, {
+    path: "/:pathMatch(.*)",
+    name: "error",
+    component: () => import(/* webpackChunkName error*/ "../views/errorpath.vue")
   }
 ]
 
