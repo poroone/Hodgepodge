@@ -4,7 +4,7 @@
     <button @click="add">改变父组件的num</button>
 </template>
     
-<script setup>
+<script setup lang="ts">
 import { ref, reactive } from 'vue'
 import Emit from './emit.vue';
 const props = defineProps<{

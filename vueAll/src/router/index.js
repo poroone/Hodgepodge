@@ -132,5 +132,12 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-
+// router.beforeEach((to,from)=>{
+//   if(to.path !== "/login"){
+// const token = window.localStorage.getItem("token");
+// if (!token) {
+//   //     return "/login"
+// }
+//   }
+// })
 export default router

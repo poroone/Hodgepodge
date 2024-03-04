@@ -18,26 +18,25 @@
     <button @click="router">routerQuery </button>
     <router-link to="/error">error</router-link> |
     <router-link to="/error/user/123">error</router-link> |
-    <router-link to="/dom" v-slot="{ href, route, navigate, isActive, isExactActive }">
-      <div>
+
+    <!-- <router-link to="/dom" v-slot="{ href, route, navigate, isActive, isExactActive }"> -->
+    <!-- <div>
         <p>href ------{{ href }}</p>
         <p>route ------{{ route }}</p>
         <p>navigate ------{{ navigate }}</p>
         <p>isActive ------{{ isActive }}</p>
         <p>isExactActive ------{{ isExactActive }}</p>
-      </div>
-    </router-link>
+      </div> -->
+    <!-- </router-link> -->
 
 
   </nav>
+
   <router-view v-slot="{ Component, route }">
-    <template name="poro">
-      <keep-alive>
-        <component :is="Component" :key="route.path"></component>
-      </keep-alive>
-    </template>
+        <keep-alive>
+          <component :is="Component" :key="route.path"></component>
+        </keep-alive>
   </router-view>
-  
 </template>
 <script setup>
 // import { watch } from "vue"

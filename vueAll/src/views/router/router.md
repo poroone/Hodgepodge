@@ -267,7 +267,7 @@ removeRouter()
   - 两个参数
     - to :即将进入的路由route
     - from:即将离开的路由route对象
-    - next :
+    - next : vue3不推荐使用了
         - 在Vue2中我们是通过next函数来决定如何进行跳转的；
         - 但是在Vue3中我们是通过返回值来控制的，不再推荐使用next函数，这是因为开发中很容易调用多次next；
   - 返回值:
