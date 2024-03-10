@@ -299,7 +299,7 @@ message("poro")
     }
     changeMessage("left")
 ```
-# 字面量使用
+# 字面量推理
 ```javascript
 const message ={
     name:"PORO",

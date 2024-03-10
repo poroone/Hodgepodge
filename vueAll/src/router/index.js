@@ -122,6 +122,10 @@ const routes = [
     name: "router",
     component: () => import(/* webpackChunkName error*/ "../views/router/index.vue")
   }, {
+    path: "/ts",
+    name: "ts",
+    component: () => import(/* webpackChunkName error*/ "../views/Ts/ts.vue")
+  }, {
     path: "/:pathMatch(.*)",
     name: "error",
     component: () => import(/* webpackChunkName error*/ "../views/errorpath.vue")

@@ -15,6 +15,7 @@
     <router-link to="/hFunction">hFunction</router-link> |
     <router-link to="/directive">directive</router-link> |
     <router-link to="/router/poro">routerParams</router-link> |
+    <router-link to="/ts">ts</router-link> |
     <button @click="router">routerQuery </button>
     <router-link to="/error">error</router-link> |
     <router-link to="/error/user/123">error</router-link> |
