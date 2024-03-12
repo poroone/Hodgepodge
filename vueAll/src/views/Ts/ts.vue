@@ -107,5 +107,64 @@ class Persong{
     console.log(pg.name)
     pg.name="poroone"
     console.log(pg.name)
+
+
+    abstract class Shape{
+        // 抽象方法
+        abstract getAea():number
+    }
+    // 1
+    class Circle extends Shape{
+        private r:number
+        constructor(r:number){
+            super()
+            this.r=r
+        }
+         getAea(){
+            return  this.r+this.r
+         }
+    }
+    // 2
+    class Circle2 extends Shape{
+        private width:number
+        private height:number
+
+        constructor(width:number, height:number){
+            super()
+            this.width=width
+            this.height=height
+        }
+        getAea(){
+            return this.width*this.height
+        }
+    }
+    const Circle3=new Circle(10)
+    const Circle4=new Circle2(100,200)
+
+    console.log(Circle3.getAea())
+    console.log(Circle4.getAea())
+
+    // enum Direction{
+    //     LEET=0,
+    //     TOP=1,
+    //     RIGHT=2,
+    //     BOTTOM=3
+    // }
+    // 可以设置其他值
+    // 这个时候就是从100开始递增
+    // enum Direction{
+    //     LEET=100,
+    //     TOP,
+    //     RIGHT,
+    //     BOTTOM
+    // }    
+    // // 赋值其他的类型
+      enum Direction{
+        LEET,
+        TOP,
+        RIGHT="RIGHT",
+        BOTTOM="BOTTOM"
+    }
+console.log(Direction)
 </script>
 <style scoped></style>

@@ -200,7 +200,7 @@ function move(animal:Fish |Dog){
 4. 类可以有自己的构造函数constructor，当我们通过new关键字创建一个实例时，构造函数会被调用；
    1. 构造函数不需要返回任何值，默认返回当前创建出来的实例；
 5. 类中可以有自己的函数，定义的函数称之为方法；
-# 类的继承
+#### 类的继承
    1. 面向对象的其中一大特性就是继承，继承不仅仅可以减少我们的代码量，也是多态的使用前提。
    2. 使用extends关键字来实现继承，子类中使用super来访问父类
    3. 使用Student类继承自Person
@@ -219,7 +219,7 @@ function move(animal:Fish |Dog){
         }
     }
 ```
-# 类的成员修饰符
+#### 类的成员修饰符
 - 在TypeScript中，类的属性和方法支持三种修饰符： public、private、protected
     1. public 修饰的是在任何地方可见、公有的属性或方法，默认编写的属性就是public的；
     2. private：类成员只能在类中被访问。
@@ -286,7 +286,7 @@ console.log(new persons("poro233"))
 // console.log(new persons("poro233").name)
 
 ```
-# 只读属性 readonly
+####  只读属性 readonly
 果有一个属性我们不希望外界可以任意的修改，只希望确定值后直接使用，那么可以使用readonly
 ```javascript
     class Person{
@@ -300,7 +300,7 @@ console.log(new persons("poro233"))
 //  无法为“name”赋值，因为它是只读属性。
 //  p.name="123"
 ```
-# getters/setters
+####  getters/setters
 一些私有属性我们是不能直接访问的，或者某些属性我们想要监听它的获取(getter)和设置(setter)的过程，这个时候我们可以使用存取器。
 ```javascript
 class Persong{
@@ -320,4 +320,436 @@ class Persong{
       console.log(p.name)//poro
     p.name="poroone" 
     console.log(p.name)//poroone
+```
+#### 静态成员
+    1. 我们在类中定义的成员和方法都属于对象级别的, 在开发中, 我们有时候也需要定义类级别的成员和方法。
+    2. 在TypeScript中通过关键字static来定义
+```javascript
+    class Student{
+        static time:string="20:00"
+        static attendClass(){
+            console.log("去上课")
+        }
+    }
+    console.lg(Student.time)
+    Student.attendClass()
+```
+#### 抽象类abstract
+- 继承是多态使用的前提
+  1. 所以在定义很多通用的调用接口时, 我们通常会让调用者传入父类，通过多态来实现更加灵活的调用方式。
+  2. 但是，父类本身可能并不需要对某些方法进行具体的实现，所以父类中定义的方法,，我们可以定义为抽象方法。
+
+- 什么是 抽象方法,在TypeScript中没有具体实现的方法(没有方法体)，就是抽象方法
+    1. 必须方法在抽象类中
+    2. 抽象类是使用abstract声明的类
+- 抽象类有如下的特点
+    1. 抽象类是不能被实例的话（也就是不能通过new创建）
+    2. 抽象方法必须被子类实现,否则该类必须是一个抽象类
+```javascript
+// 抽象类
+    abstract class Shape{
+        // 抽象方法
+        abstract getAea():number
+    }
+    // 1
+    class Circle extends Shape{
+        private r:number
+        constructor(r:number){
+            super()
+            this.r=r
+        }
+         getAea(){
+            return  this.r+this.r
+         }
+    }
+    // 2
+    class Circle2 extends Shape{
+        private width:number
+        private height:number
+
+        constructor(width:number, height:number){
+            super()
+            this.width=width
+            this.height=height
+        }
+        getAea(){
+            return this.width*this.height
+        }
+    }
+    const Circle=new Circle(10)
+    const Circle2=new Circle2(100,200)
+
+    console.log(Circle.getAea())//20
+    console.log(Circle2.getAea())//20000
+
+```
+#### 类的类型
+    类本身也是可以作为一种数据类型
+``` javascript 
+    class Person{
+        name:sting
+        constructor(name){
+            this.name=name
+        }
+        running(){
+            console.log(this.name+"running")
+        }
+    }
+    const p1:Person=new Person("poro")
+    const p2:Person={
+        name:"poro",
+        running:function(){
+            console.log(this.name+"running")
+        }
+    }
+    // 1
+```
+# 接口的声明
+    通过type可以用来声明一个对象类型
+```javascript
+type Point={
+    x:number
+    y:number
+}
+
+```
+    对象的另外一种声明方式就是通过接口来声明：
+```javascript
+
+interface Point{
+    x:number
+    y:number
+}
+```
+### 可选属性
+    接口中也可以定义可选属性
+```javascript
+    interface Person{
+        name:string
+        age:number
+        friend?:{
+            string:string
+        }
+    }
+    const person:Person={
+        name:"poro",
+        age:18,
+        friend:{
+            name:"Theest"
+        }
+    }
+```
+### 只读属性
+    也可以定义只读属性
+    这样意味着再初始化之后，这个值是不可以被修改的
+```javascript
+interface Person{
+    readonly name:string
+    age?:number
+    readonly friend:{
+        name:string
+    }
+}
+const person:Person={
+    name:"poro",
+    age:18,
+    friend:{
+        name:"TheBest"
+    }
+}
+// person.name="xxx" 不可以设置
+//  person.friend={} 不可以设置
+person.friend.name="xxx"
+```
+### 索引类型
+    使用interface来定义对象类型，这个时候其中的属性名、类型、方法都是确定的，但是有时候会遇到类似下面的对象：
+```javascript
+    interface FrontLanguage{
+        [index:number]:string
+    }
+    const frontend:FrontLanguage={
+        1:"HTML",
+        2:"CSS"
+        3:"javaScript"
+    }
+     interface FrontLanguage{
+        [index:string]:number
+        java:number
+    }
+    const frontend:FrontLanguage={
+       "java":1995,
+       "javascript":1996,
+       "c":1972
+    }
+
+```
+### 函数类型
+    使用interface定义函数类型
+```javascript
+interface CalcFunc{
+        (num1:number,num2:number):number
+}
+const add:CalcFunc=(num1,num2)=>{
+    return num1+num2
+}
+const sub:CalcFunc=(num1,num2)=>{
+    return num1-num2
+}
+```
+### 接口继承
+    1.接口和类一样是可以进行继承的，也是使用extends关键字
+    2.接口是支持多继承的（类不支持多继承）
+```javascript
+interface Person{
+    name:string
+    eating:()=>void
+}
+interface Animal{
+    running:()=>void
+}
+interface student extends Animal,Person{
+    sno:number
+}
+
+
+// **********************
+
+const stu:student={
+    sno:180,
+    name:"poro",
+    eating:function(){
+
+    },
+    running:function(){
+
+    }
+}
+```
+### 接口的实现
+    1. 接口定义后，也是可以被类实现的
+    2. 如果被一个类实现，那么在之后需要传入接口的地方，都可以将这个类传入
+    3. 这就是面向接口开发
+```javascript
+interface ISwim{
+    swimming:()=>void
+}
+interface IRun{
+    running:()=>void
+}
+class Person implements ISwim,IRun{
+    swimming(){
+        console.log("swimming")
+    }
+    running(){
+        console.log("running")
+    }
+}
+
+
+// ----------------------------
+function swim(swimmer:ISwim){
+    swimmer.swimming()
+}
+const p=new Person()
+swim(p)
+
+```
+# 交叉类型
+    交叉类型累死表示需要满足多个类型的条件 使用&符号
+```javascript
+interface Colorful{
+    color:string
+}
+interface IRun{
+    running:()=>void
+}
+type NewType=Colorful & IRun
+
+const obj:NewType={
+    color:"red",
+    running:function(){
+
+    }
+    }
+```
+# interface和type区别
+- interface和type都可以用来定义对象类型，
+  - 如果是定义非对象类型，通常推荐使用type，比如Direction、Alignment、一些Function
+- 如果是定义对象类型，那么他们是有区别的
+  - interface 可以重复的对某个接口来定义属性和方法
+  - 而type定义的是别名，别名是不能重复的
+```javascript
+    interface IPerson{
+        name:string
+        running:()=>void
+    }
+    interface IPerson{
+        age:name
+    }
+
+//-------------------------
+    type Person{
+        name:string
+        running:()=>void
+    }
+    // error 
+    type Person{
+       age:name
+    }
+```
+# 字面量赋值
+1.提示 这是因为TypeScript在字面量直接赋值的过程中，为了进行类型推导会进行严格的类型限制。
+```javascript
+    interface IPerson{
+        name:string
+        eating:()=>void
+    }
+
+const p:IPerson={
+    name:"poro",
+    age:18, //object中没有age
+    eatings:()=>function(){
+
+    }
+}
+
+```
+2.如果我们是将一个 变量标识符 赋值给其他的变量时，会进行freshness擦除操作
+```javascript
+    interface IPerson{
+        name:string
+        eating:()=>void
+    }
+
+const obj={
+    name:"poro",
+    age:18, //error
+    eatings:()=>function(){
+
+    }
+}
+const p:IPerson=obj
+```
+# ts枚举类型 enum
+- 枚举类型是为数不多的TypeScript特性有的特性之一
+    - 枚举其实就是将一组可能出现的值，一个个列举出来，定义在一个类型中，这个类型就是枚举类型；
+    - 枚举允许开发者定义一组命名常量，常量可以是数字、字符串类型；
+```javascript
+enum Direction{
+    LEET,
+    TOP,
+    RIGHT,
+    BOTTOM
+}
+
+function turnDirection(direction: Direction){
+    switch (direction){
+        case LEET:
+            console.log("向左")
+        break;
+        case RIGHT:
+            console.log("向右")
+        break;
+        case TOP:
+            console.log("向上")
+        break;
+        case BOTTOM:
+            console.log("向下")
+        break;
+        default:
+            const myDirection: never=direction
+    }
+}
+```
+### 枚举值的类型
+```javascript
+// 默认值是
+    enum Direction{
+        LEET=0,
+        TOP=1,
+        RIGHT=2,
+        BOTTOM=3
+    }
+    // 可以设置其他值
+    // 这个时候就是从100开始递增
+    enum Direction{
+        LEET=100,
+        TOP,
+        RIGHT,
+        BOTTOM
+    }    
+    // 赋值其他的类型
+      enum Direction{
+        LEET="LEET",
+        TOP="TOP",
+        RIGHT,
+        BOTTOM
+    }
+```
+# 泛型
+- 软件工程的主要目的是构建不仅仅明确和一致的API，还要让你的代码具有很强的可重用性
+  - 我们可以通过函数来封装一些API，通过传入不同的函数参数，让函数帮助我们完成不同的操作
+  - 对于参数的类型也可以参数化
+- 可以使用两种方式来调用
+  - 通过 <类型> 的方式将类型传递给函数；
+  - 通过类型推到，自动推到出我们传入变量的类型
+  - 在这里会推导出它们是 字面量类型的，因为字面量类型对于我们的函数也是适用的
+```javascript
+    foo<string>("abc")
+    foo<number>(123)
+```
+ -也可以传入多个类型：
+```javascript
+    function foo<T,E>(a1:T,a2:E){
+
+    }
+```
+- 平时在开发中可能会看到一些常用的名称：
+  - T：Type的缩写，类型
+  - K、V：key和value的缩写，键值对
+  - E：Element的缩写，元素
+  - O：Object的缩写，对象
+# 泛型接口
+    在定义接口的时候我们也可以使用泛    
+```javascript
+interface IFoo<T>{
+    initialValue: T,
+    valueList:T[],
+    handleValue:(value:T)=>void
+}
+
+const foo:IFoo<number>={
+    initialValue:0,
+    valueList:[0,1,2,3],
+    handleValue:(value:number)=>{
+        console.log(value)
+    }
+}
+```
+# 泛型类
+```javascript
+    class Point<T>{
+        x:T,
+        y:T
+        constructor(x:T, y:T){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    const p1=new Point(10,20)
+    const p2=new Point<number>(10,20)
+    const p3:Point<number>=new Point(10,20)
+
+```
+# 泛型约束
+```javascript
+interface ILength{
+    length:number
+}
+function getLength<T extends ILength>(arr:T){
+    return arr.length
+}
+console.log(getLength("abc"))
+console.log(getLength(["abc","def"]))
+console.log(getLength({length:100,name:"poro"}))
 ```
