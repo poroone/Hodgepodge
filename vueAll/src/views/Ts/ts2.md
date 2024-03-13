@@ -742,6 +742,10 @@ const foo:IFoo<number>={
 
 ```
 # 泛型约束
+    1.有时候我们希望传入的类型有某些共性，但是这些共性可能不是在同一种类型中
+    2. 比如string和array都是有length的，或者某些对象也是会有length属性的
+    3. 那么只要是拥有length的属性都可以作为我们的参数类型？
+
 ```javascript
 interface ILength{
     length:number
@@ -752,4 +756,172 @@ function getLength<T extends ILength>(arr:T){
 console.log(getLength("abc"))
 console.log(getLength(["abc","def"]))
 console.log(getLength({length:100,name:"poro"}))
+```
+# 模块化
+- TypeScript支持两种方式来控制作用域
+  - 模块化：每个文件可以是一个独立的模块，支持ES Module，也支持CommonJS
+  - 命名空间：通过namespace来声明一个命名空间
+```javascript   
+export function add(num1:number,num2:number){
+    return num1+num2
+}
+function sub(num1:number,num2:number){
+    return num1-num2
+}
+export default sub
+```
+# 命名空间namespace
+命名空间主要目的是将一个模块内部再进行作用域的划分，防止一些命名冲突的问题。
+```javascript
+    export namespace Time {
+        export function format(time:string){
+            return "2022-02-22"
+        }
+    }
+    export namespace Price{
+        export function format(price:number){
+            return "123456"
+        }
+    }
+```
+# 类型的查找
+- Typescript对类型的管理和查找规则
+  - 内置类型声明
+  - 外部定义类型声明
+  - 自己定义类型声明
+### 内置类型声明
+1. 内置类型声明是typescript自带的、帮助我们内置了JavaScript运行时的一些标准化API的声明文件
+2. 包括比如Math、Date等内置类型，也包括DOM API，比如Window、Document等
+3. 内置类型声明通常在我们安装typescript的环境中会带有的；
+https://github.com/microsoft/TypeScript/blob/release-2.4/lib
+### 外部定义类型声明
+1. 外部类型声明通常是使用一些库（比如第三方库）时，需要的一些类型声明
+2. 这些库通常有两种类型声明方式
+   1. 在自己库中进行类型声明（编写.d.ts文件），比如axios
+   2. 通过社区的一个公有库DefinitelyTyped存放类型声明文件
+      1. 该库的GitHub地址：https://github.com/DefinitelyTyped/DefinitelyTyped/
+      2. 库查找声明安装方式的地址 https://www.typescriptlang.org/zh/
+      3. 如安装react的类型声明： npm i @types/react --save-dev
+### 自定义声明
+1. 使用的第三方库是一个纯的JavaScript库，没有对应的声明文件；比如lodash
+2. 给自己的代码中声明一些类型，方便在其他地方直接进行使用；
+### 声明变量-函数-类
+```javascript
+let name="poro"
+let age=10
+let height=1.88
+function foo(){
+    console.log("foo")
+}
+function Person(name,age){
+    this.name=name
+    this.age=age
+}
+```
+
+```javascript
+declare let name:string
+declare let age:number
+declare let height:number
+declare function foo:()=>void
+declare class Person{
+    name:string
+    age:number
+    constructor(name:string,age:number)
+}
+
+```
+# 声明模块
+     也可以使用声明模块 比如lodash 模块默认不能使用的情况,自己来声明这个模块
+
+```javascript
+declare module "lodash" {
+    export function join(args:any[]):any
+}
+```
+1. 声明模块的语法: declare module '模块名' {}。
+2. 在声明模块的内部，我们可以通过 export 导出对应库的类、函数等；
+# declare文件
+    在某些情况下，也可以声明文件
+    1. 比如在开发vue的过程中，默认是不识别我们的.vue文件的，那么我们就需要对其进行文件的声明；
+    2. 比如在开发中我们使用了 jpg 这类图片文件，默认typescript也是不支持的，也需要对其进行声明；
+```javascript
+    declare module "*.vue"{
+        import {DefineComponent} from "vue"
+        const component:DefineComponent
+        export default component
+    } 
+    declare module "*.jgp"{
+        const src:string
+        export default src
+    }
+```
+# declare命名空间
+1. 比如我们在index.html中直接引入jq
+   1. CDN地址： https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js
+2. 可以进行命名空间声明
+```javascript
+declare namespace $ {
+    function ajax(setting:any):void
+}
+```
+3. 在main.ts中就可以使用了
+```javascript
+$.ajax({
+    url:"xxxxx"
+    success:(res:any)=>{
+        console.log(res)
+    }
+})
+```
+
+# tsconfig.json 文件
+1. tsconfig.json是用于配置TypeScript编译时的配置选项：
+2. https://www.tslang.cn/docs/handbook/tsconfig-json.html
+```javascript
+{
+  "compilerOptions": {
+    // 目标代码(ts -> js(es5/6/7))
+    "target": "esnext",
+    // 目标代码需要使用的模块化方案(commonjs require/module.exports/es module import/export)
+    "module": "esnext",
+    // 严格一些严格的检查(any)
+    "strict": true,
+    // 对jsx进行怎么样的处理
+    "jsx": "preserve",
+    // 辅助的导入功能
+    "importHelpers": true,
+    // 按照node的方式去解析模块 import "/index.node"
+    "moduleResolution": "node",
+    // 跳过一些库的类型检测 (axios -> 类型/ lodash -> @types/lodash / 其他的第三方)
+    // import { Person } from 'axios'
+    "skipLibCheck": true,
+    // export default/module.exports = {}
+    // es module 和 commonjs
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // 要不要生成映射文件(ts -> js)
+    "sourceMap": true,
+    // 文件路径在解析时, 基本url
+    "baseUrl": ".",
+    // 指定具体要解析使用的类型
+    "types": ["webpack-env"],
+    // 路径解析(类似于webpack alias)
+    "paths": {
+      "@/*": ["src/*"],
+      "components/*": ["src/components/*"]
+    },
+    // 可以指定在项目中可以使用哪里库的类型(Proxy/Window/Document)
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
+
 ```
