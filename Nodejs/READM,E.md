@@ -68,13 +68,15 @@
 2. Ignition是一个解释器，会将AST转换成ByteCode（字节码）
 	1. 同时会收集TurboFan优化所需要的信息（比如函数参数的类型信息，有了类型才能进行真实的运算）；
 	2. 如果函数只调用一次，Ignition会执行解释执行ByteCode；
-	3. Ignition的V8官方文档：https://v8.dev/blog/ignition-interpreter![v8lgnitionpng](./image/v8lgnitionpng.png)
+	3. Ignition的V8官方文档：https://v8.dev/blog/ignition-interpreter
+	4. ![v8lgnitionpng](./image/v8lgnitionpng.png)
 	
 3. TurboFan是一个编译器，可以将字节码编译为CPU可以直接执行的机器码；
 	1. 如果一个函数被多次调用，那么就会被标记为热点函数，那么就会经过TurboFan转换成优化的机器码，提高代码的执行性能；
 	2. 但是，机器码实际上也会被还原为ByteCode，这是因为如果后续执行函数的过程中，类型发生了变化（比如sum函数原来执行的是number类型，后来执行变成了string类型），之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码；
-	3. TurboFan的V8官方文档：https://v8.dev/blog/turbofan-jit![V8TurboFan](./image/V8TurboFan.png)
-
+	3. TurboFan的V8官方文档：https://v8.dev/blog/turbofan-jit
+	4. ![V8TurboFan](./image/V8TurboFan.png)
+	
 4. 上面是JavaScript代码的执行过程，V8的内存回收也是其强大的另外一个原因
 	1. Orinoco模块，负责垃圾回收，将程序中不需要的内存回收；
 	
