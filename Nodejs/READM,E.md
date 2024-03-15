@@ -22,7 +22,7 @@
 
 ## 渲染引擎工作的过程
 
-![渲染流程图](.\image\渲染流程图.png)
+![渲染流程图](./image/渲染流程图.png)
 
 1. 如果在渲染过程中遇到javascript标签 因该怎么办
 
@@ -46,7 +46,7 @@
 	1. WebCore：负责HTML解析、布局、渲染等等相关的工作；
 	2. JavaScriptCore：解析、执行JavaScript代码；
 
-![webkit](.\image\webkit.png)
+![webkit](.\image\webkit.png) 
 	3. javascript引擎就是V8引擎
 
 # V8引擎
