@@ -46,14 +46,14 @@
 	1. WebCore：负责HTML解析、布局、渲染等等相关的工作；
 	2. JavaScriptCore：解析、执行JavaScript代码；
 
-![webkit](.\image\webkit.png) 
+	![webkit](.\image\webkit.png)  
 	3. javascript引擎就是V8引擎
 
 # V8引擎
 	1. V8是用C ++编写的Google开源高性能JavaScript和WebAssembly引擎，它用于Chrome和Node.js等。
 	2. 它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+和使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。
 	3. V8可以独立运行，也可以嵌入到任何C ++应用程序中。
-![webkit](.\image\V8编译过程.png)
+	![webkit](.\image\V8编译过程.png)
 
 # V8引擎的原理
 
@@ -105,7 +105,7 @@
 
 2. libuv提供了事件循环、文件系统读写、网络IO、线程池等等内容；
 
-   ![Nodejs架构图](.\image\Nodejs架构图.png)
+ 	  ![Nodejs架构图](.\image\Nodejs架构图.png)
 
 # Node.js的应用场景
 
