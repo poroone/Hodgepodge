@@ -22,7 +22,7 @@
 
 ## 渲染引擎工作的过程
 
-![渲染流程图](.\image\渲染流程图.png)
+![渲染流程图](./image/渲染流程图.png)
 
 1. 如果在渲染过程中遇到javascript标签 因该怎么办
 
@@ -46,14 +46,14 @@
 	1. WebCore：负责HTML解析、布局、渲染等等相关的工作；
 	2. JavaScriptCore：解析、执行JavaScript代码；
 
-![webkit](.\image\webkit.png)
+![webkit](./image/webkit.png)
 	3. javascript引擎就是V8引擎
 
 # V8引擎
 	1. V8是用C ++编写的Google开源高性能JavaScript和WebAssembly引擎，它用于Chrome和Node.js等。
 	2. 它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+和使用x64，IA-32，ARM或MIPS处理器的Linux系统上运行。
 	3. V8可以独立运行，也可以嵌入到任何C ++应用程序中。
-![webkit](.\image\V8编译过程.png)
+![webkit](./image/V8编译过程.png)
 
 # V8引擎的原理
 
@@ -61,17 +61,19 @@
 
    1. 如果函数没有被调用，那么是不会被转换成AST的；
 
-   2. Parse的V8官方文档：https://v8.dev/blog/scanner![V8Parser](.\image\V8Parser.png)
+   2. Parse的V8官方文档：https://v8.dev/blog/scanner
+   
+   3. ![V8Parser](./image/V8Parser.png)
    
 2. Ignition是一个解释器，会将AST转换成ByteCode（字节码）
 	1. 同时会收集TurboFan优化所需要的信息（比如函数参数的类型信息，有了类型才能进行真实的运算）；
 	2. 如果函数只调用一次，Ignition会执行解释执行ByteCode；
-	3. Ignition的V8官方文档：https://v8.dev/blog/ignition-interpreter![v8lgnitionpng](.\image\v8lgnitionpng.png)
+	3. Ignition的V8官方文档：https://v8.dev/blog/ignition-interpreter![v8lgnitionpng](./image/v8lgnitionpng.png)
 	
 3. TurboFan是一个编译器，可以将字节码编译为CPU可以直接执行的机器码；
 	1. 如果一个函数被多次调用，那么就会被标记为热点函数，那么就会经过TurboFan转换成优化的机器码，提高代码的执行性能；
 	2. 但是，机器码实际上也会被还原为ByteCode，这是因为如果后续执行函数的过程中，类型发生了变化（比如sum函数原来执行的是number类型，后来执行变成了string类型），之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码；
-	3. TurboFan的V8官方文档：https://v8.dev/blog/turbofan-jit![V8TurboFan](.\image\V8TurboFan.png)
+	3. TurboFan的V8官方文档：https://v8.dev/blog/turbofan-jit![V8TurboFan](./image/V8TurboFan.png)
 
 4. 上面是JavaScript代码的执行过程，V8的内存回收也是其强大的另外一个原因
 	1. Orinoco模块，负责垃圾回收，将程序中不需要的内存回收；
@@ -97,7 +99,7 @@
 2. V8可以嵌入到任何C ++应用程序中，无论是Chrome还是Node.js，事实上都是嵌入了V8引擎来执行JavaScript代码；
 3. 但是在Chrome浏览器中，还需要解析、渲染HTML、CSS等相关渲染引擎，另外还需要提供支持浏览器操作的API、浏览器自己的事件循环等；
 4. 另外，在Node.js中我们也需要进行一些额外的操作，比如文件系统读/写、网络IO、加密、压缩解压文件等操作；
-![浏览器和nodejs的区别](.\image\浏览器和nodejs的区别.png)
+![浏览器和nodejs的区别](./image/浏览器和nodejs的区别.png)
 
 # Node.js架构
 
@@ -105,7 +107,7 @@
 
 2. libuv提供了事件循环、文件系统读写、网络IO、线程池等等内容；
 
-   ![Nodejs架构图](.\image\Nodejs架构图.png)
+   ![Nodejs架构图](./image/Nodejs架构图.png)
 
 # Node.js的应用场景
 
