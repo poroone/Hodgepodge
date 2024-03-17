@@ -3,11 +3,15 @@
 // console.log(__dirname)
 
 // console.log(__filename)
-console.log(global)
+// console.log(global)
 
 // var name="poro"
 // console.log(window.name) // poro
 
 
-var name="poro"
-console.log(global.name) //undefined
+var name="poroone"
+// console.log(global.name) //undefined
+exports.name="poro"
+module.exports={name}
+console.log(module)
+console.log(exports)
