@@ -16,5 +16,5 @@ module.exports={name}
 console.log(module)
 console.log(exports)
 
-const buffer=new Buffer("why")
+const buffer=new Buffer.from("why")
 console.log(buffer)
