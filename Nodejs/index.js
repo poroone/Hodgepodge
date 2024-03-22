@@ -9,12 +9,9 @@
 // console.log(window.name) // poro
 
 
-var name="poroone"
+var name = "poroone"
 // console.log(global.name) //undefined
-exports.name="poro"
-module.exports={name}
+exports.name = "poro"
+module.exports = { name }
 console.log(module)
 console.log(exports)
-
-const buffer=new Buffer.from("why")
-console.log(buffer)
