@@ -1,3 +1,7 @@
+# nomorepo
+    pnpm+nomorepo 
+   优点可以扁平化 提取公共模块外最外层
+
 #  vueAll
 
 1. webpack  相关配置
