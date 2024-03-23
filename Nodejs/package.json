@@ -1,5 +1,7 @@
 {
+  "name": "@web/nodejs",
   "dependencies": {
+    "@web/common": "workspace:^",
     "sharp": "^0.33.2"
   }
 }

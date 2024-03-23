@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import pluginObject from './views/pulgin/pluginObject'
-const app=createApp(App)
+import { api } from "@web/common"
+console.log(api)
+const app = createApp(App)
 // 全局mixin
 // app.mixin({
 //     created(){

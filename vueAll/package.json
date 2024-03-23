@@ -1,5 +1,5 @@
 {
-  "name": "utils",
+  "name": "@web/vueall",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.23.9",
     "@vitejs/plugin-vue": "^5.0.4",
+    "@web/common": "workspace:^",
     "css-minimizer-webpack-plugin": "^6.0.0",
     "dayjs": "^1.11.10",
     "vite": "^5.1.3",
