@@ -113,9 +113,12 @@
 
 # Node.js架构
 
-1. 编写的JavaScript代码会经过V8引擎，再通过Node.js的Bindings，将任务放到Libuv的事件循环中；p libuv（Unicorn Velociraptor—独角伶盗龙）是使用C语言编写的库；、
+1. 编写的JavaScript代码会经过V8引擎，再通过Node.js的Bindings，将任务放到Libuv的事件循环中；libuv（Unicorn Velociraptor—独角伶盗龙）是使用C语言编写的库；、
 
 2. libuv提供了事件循环、文件系统读写、网络IO、线程池等等内容；
+3. libuv主要维护了一个EvenetLoop和worker threads(线程池)
+4. eventLoop主要调用系统的一些其他操作:文件的io NetWork child-process
+5. libuv是一个多平台的专注异步IO的库
 
    ![Nodejs架构图](./image/Nodejs架构图.png)
 

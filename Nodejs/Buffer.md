@@ -37,3 +37,12 @@
 # buffer创建方式
 ![buffer创建方式](./image/buffer创建方式.png)
 # buffer的alloc
+1. 指定预留多少空间 字节
+```javascript
+const bufferAlloc = new Buffer.alloc(8)
+console.log(bufferAlloc) //<00 00 00 00 00 00 00 00>
+bufferAlloc[0] = 88
+bufferAlloc[1] = 0x88
+console.log(bufferAlloc)
+// 可通过下标控制
+```
