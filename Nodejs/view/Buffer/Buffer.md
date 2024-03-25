@@ -33,9 +33,9 @@
     console.log(buffer)
 ```
 3. 过程的话就是 字符串=> 16进制=>Buffer
-![二进制和buffer](./image/二进制和buffer.png)
+![二进制和buffer](../../image/二进制和buffer.png)
 # buffer创建方式
-![buffer创建方式](./image/buffer创建方式.png)
+![buffer创建方式](../../image/buffer创建方式.png)
 # buffer的alloc
 1. 指定预留多少空间 字节
 ```javascript

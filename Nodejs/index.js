@@ -12,6 +12,9 @@
 var name = "poroone"
 // console.log(global.name) //undefined
 exports.name = "poro"
+
 module.exports = { name }
+
 console.log(module)
+
 console.log(exports)
