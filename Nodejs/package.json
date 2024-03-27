@@ -1,10 +1,19 @@
 {
   "name": "@web/nodejs",
-  "scripts":{
-    "node":"nodemon http.js"
+  "scripts": {
+    "node": "nodemon http.js"
   },
   "dependencies": {
     "@web/common": "workspace:^",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "multer": "1.4.5-lts.1",
     "sharp": "^0.33.2"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
